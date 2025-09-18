@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode.mechanisims1;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Servo_Intake_Practice {
+public class DC_Intake_Practice {
 
     private DcMotor motor; // IntakeMotor1
     private double ticksPerRev;
@@ -13,13 +13,15 @@ public class Servo_Intake_Practice {
 
     public void init(HardwareMap hwMap) {
         // Touch Sensor
-        touchSensor = hwMap.get(DigitalChannel.class,"Touch Sensor");
+        touchSensor = hwMap.get(DigitalChannel.class,"touch_sensor");
         touchSensor.setMode(DigitalChannel.Mode.INPUT);
 
         // Dc Motor
         motor = hwMap.get(DcMotor.class, "intake_motor_1");
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         ticksPerRev = motor.getMotorType().getTicksPerRev();
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
     // ------------ Touch Sensor ------------
     public boolean isTouchSensorPressed(){
