@@ -17,7 +17,7 @@ public class DC_Intake_Practice {
         touchSensor.setMode(DigitalChannel.Mode.INPUT);
 
         // Dc Motor
-        motor = hwMap.get(DcMotor.class, "intake_motor_1");
+        motor = hwMap.get(DcMotor.class, "intake_DC");
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         ticksPerRev = motor.getMotorType().getTicksPerRev();
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
